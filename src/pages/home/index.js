@@ -10,7 +10,7 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/rooms');
+        const response = await axios.get('https://patregochat-server.onrender.com/rooms');
         setRooms(response.data);
       } catch (err) {
         console.error('Error fetching rooms:', err);
