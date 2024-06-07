@@ -13,6 +13,7 @@ body {
   padding: 20px; /* Добавлено внутреннее отступ */
   background: #2e2e3e; /* Темный фон для контейнера */
   border-radius: 10px; /* Закругленные углы */
+  height: 100%;
 }
 
 /* Room and users component */

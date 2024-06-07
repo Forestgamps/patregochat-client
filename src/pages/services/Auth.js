@@ -8,6 +8,7 @@ function Auth() {
     const [message, setMessage] = useState('');
     const [image, setImage] = useState(null);
     const [profilePicture, setProfilePicture] = useState('');
+    const [roomName, setRoomName] = useState('');
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -75,6 +76,16 @@ function Auth() {
         setProfilePicture('');
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          await axios.post('https://patregochat-server.onrender.com/rooms', { name: roomName });
+          navigate('/');
+        } catch (err) {
+          console.error('Error adding room:', err);
+        }
+      };
+
     if (localStorage.getItem('token')) {
         return (
             <div className={styles.container}>
@@ -90,6 +101,7 @@ function Auth() {
                 />
                 <button onClick={handleUpload} className={styles.button}>Загрузить картинку</button>
             </div>
+            
         );
     } else {
         return (
@@ -112,7 +124,21 @@ function Auth() {
                 <button onClick={handleRegister} className={styles.button}>Зарегистрироваться</button>
                 <button onClick={handleLogin} className={styles.button}>Войти</button>
                 <p className={styles.message}>{message}</p>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        className={styles.input}
+                        type="text"
+                        placeholder="Название комнаты"
+                        value={roomName}
+                        onChange={(e) => setRoomName(e.target.value)}
+                        required
+                    />
+                    <button className="btn btn-primary" type="submit" style={{ width: '100%' }}>
+                        Add Room
+                    </button>
+                </form>
             </div>
+            
         );
     }
 }
