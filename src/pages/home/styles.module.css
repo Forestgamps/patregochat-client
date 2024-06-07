@@ -1,0 +1,63 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1e1e2e; /* Темный фон */
+  font-family: 'Arial', sans-serif; /* Современный шрифт */
+  color: #fff; /* Белый текст */
+}
+
+.formContainer {
+  width: 400px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #2b2b40; /* Улучшенный темный фон для формы */
+  border-radius: 12px; /* Более плавные углы */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Уменьшенный промежуток для компактности */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Теневой эффект */
+}
+
+.input {
+  width: 100%;
+  padding: 14px; /* Более комфортное расстояние */
+  border-radius: 8px; /* Более плавные углы */
+  border: 1px solid #454566; /* Мягкий контраст */
+  font-size: 1rem; /* Увеличенный шрифт */
+  background: #3b3b51; /* Улучшенный фон для ввода */
+  color: #fff; /* Белый текст */
+  transition: border 0.3s ease; /* Плавный переход */
+}
+
+.input:focus {
+  border: 1px solid #6b6b91; /* Цвет рамки при фокусе */
+  outline: none; /* Убираем стандартное выделение */
+}
+
+.input::placeholder {
+  color: #b1b1c1; /* Цвет плейсхолдера */
+}
+
+.input option {
+  margin-top: 20px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background: #5c5cff; /* Яркая кнопка */
+  color: #fff; /* Белый текст */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease; /* Плавный переход */
+}
+
+button:hover {
+  background: #4a4ad4; /* Цвет при наведении */
+}
