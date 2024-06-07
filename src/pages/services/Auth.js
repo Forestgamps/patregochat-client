@@ -60,6 +60,7 @@ function Auth() {
                 },
             });
             setMessage('Image uploaded successfully');
+            setProfilePicture(profilePicture);
             localStorage.setItem('profilePicture', profilePicture);
         } catch (err) {
             setMessage('Error uploading image');
