@@ -11,7 +11,7 @@ function Auth() {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get('https://patregochat-api.onrender/me', {
+            axios.get('https://patregochat-server.onrender.com/me', {
                 headers: { Authorization: token }
             }).then(response => {
                 setUsername(response.data.username);
@@ -24,7 +24,7 @@ function Auth() {
 
     const handleRegister = async () => {
         try {
-            await axios.post('https://patregochat-api.onrender/register', { username, password });
+            await axios.post('https://patregochat-server.onrender.com/register', { username, password });
             setMessage('User registered successfully');
         } catch (err) {
             setMessage('Error registering user');
@@ -33,7 +33,7 @@ function Auth() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('https://patregochat-api.onrender/login', { username, password });
+            const response = await axios.post('https://patregochat-server.onrender.com/login', { username, password });
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', username);
             setMessage('User logged in successfully');
@@ -53,7 +53,7 @@ function Auth() {
 
         const token = localStorage.getItem('token');
         try {
-            await axios.post('https://patregochat-api.onrender/upload', formData, {
+            await axios.post('https://patregochat-server.onrender.com/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': token
@@ -120,7 +120,7 @@ if (localStorage.getItem('token')) {
     return (
         <div>
             <h1>Welcome, {username}</h1>
-            {profilePicture && <img src={`https://patregochat-api.onrender${profilePicture}`} alt="Profile" />}
+            {profilePicture && <img src={`https://patregochat-server.onrender.com${profilePicture}`} alt="Profile" />}
             <button onClick={logout}>Logout</button>
             <p>{message}</p>
             <input

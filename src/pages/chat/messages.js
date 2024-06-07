@@ -49,7 +49,7 @@ const Messages = ({ socket }) => {
     borderRadius: '50%', // Делает изображение круглым
     overflow: 'hidden' // Обрезает изображение по границам круга
   }}>
-    <img src={`https://patregochat-api.onrender${msg.profilePicture}`} alt="Profile" style={{
+    <img src={`https://patregochat-server.onrender.com${msg.profilePicture}`} alt="Profile" style={{
       width: '100%', 
       height: '100%',
       objectFit: 'cover' // Подгоняет изображение под размер контейнера

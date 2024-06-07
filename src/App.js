@@ -7,7 +7,7 @@ import Chat from './pages/chat';
 import Auth from './pages/services/Auth';
 import axios from 'axios';
 
-const socket = io.connect('https://patregochat-api.onrender');
+const socket = io.connect('https://patregochat-server.onrender.com');
 
 function App() {
   const [username, setUsername] = useState(localStorage.getItem('username') || '');
@@ -19,7 +19,7 @@ function App() {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await axios.get('https://patregochat-api.onrender/me', {
+          const response = await axios.get('https://patregochat-server.onrender.com/me', {
             headers: {
               'Authorization': token
             }
