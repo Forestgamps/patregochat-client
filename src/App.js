@@ -7,6 +7,8 @@ import Chat from './pages/chat';
 import Auth from './pages/services/Auth';
 import axios from 'axios';
 
+import appIcon from './cat.png';
+
 const socket = io.connect('https://patregochat-server.onrender.com');
 
 function App() {
@@ -36,18 +38,27 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <header className="App-header">
-          {user ? (
-            <div>
-              <h1>Room "{room}"</h1>
-            </div>
-          ) : (
-            <div>
-              <a href='/reg'>Регистрация</a>
-              <p>Please log in</p>
-            </div>
-          )}
-        </header>
+      <header className="AppHeader">
+                <div className="LeftContainer">
+                    <img src={appIcon} alt="App Icon" className="AppIcon" />
+                    <nav className="NavLinks">
+                        <a href="/">Главная</a>
+                        <a href="/about">О нас</a>
+                        {user ? (<a href="/reg">Личный кабинет</a>) : (<a href="/reg">Авторизация</a>)}
+                    </nav>
+                </div>
+            </header>
+            {user ? (
+                    <div>
+                        {/* <h1>Room "{room}"</h1> */}
+                    </div>
+                ) : (
+                    <div>
+                        
+                        <h1>Пожалуйста, авторизуйтесь</h1>
+                        <a href='/reg'>Регистрация</a>
+                    </div>
+                )}
         <Routes>
           <Route
             path='/'

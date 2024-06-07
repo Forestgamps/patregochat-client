@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -7,6 +7,7 @@
   background: #1e1e2e; /* Темный фон */
   font-family: 'Arial', sans-serif; /* Современный шрифт */
   color: #fff; /* Белый текст */
+  flex-direction: column;
 }
 
 .formContainer {

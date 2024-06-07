@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styles from './styles.module.css';
 
 function Auth() {
     const [username, setUsername] = useState('');
@@ -74,45 +75,46 @@ function Auth() {
         setProfilePicture('');
     };
 
-if (localStorage.getItem('token')) {
-    return (
-        <div>
-            <h1>Welcome, {username}</h1>
-            {profilePicture && <img src={`https://patregochat-server.onrender.com${profilePicture}`} alt="Profile" />}
-            <button onClick={logout}>Logout</button>
-            <p>{message}</p>
-            <input
-                type="file"
-                name="image"
-                onChange={(e) => setImage(e.target.files[0])}
-            />
-            <button onClick={handleUpload}>Upload</button>
-        </div>
-    );
-} else {
-    return (
-        <div>
-            <h1>Auth</h1>
-            <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button className="btn btn-secondary"
-          style={{ width: '100%' }}
-          onClick={handleRegister}>Register
-          </button>
-            <button onClick={handleLogin}>Login</button>
-            <p>{message}</p>
-        </div>
-    );
+    if (localStorage.getItem('token')) {
+        return (
+            <div className={styles.container}>
+                <h1>Добро пожаловать, {username}!</h1>
+                {profilePicture && <img src={`https://patregochat-server.onrender.com${profilePicture}`} alt="Profile" className={styles.profilePicture} />}
+                <button onClick={logout} className={styles.button}>Выйти</button>
+                <p className={styles.message}>{message}</p>
+                <input
+                    type="file"
+                    name="image"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    className={styles.input}
+                />
+                <button onClick={handleUpload} className={styles.button}>Загрузить картинку</button>
+            </div>
+        );
+    } else {
+        return (
+            <div className={styles.container}>
+                <h1>Авторизация</h1>
+                <input
+                    type="text"
+                    placeholder="Логин"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className={styles.input}
+                />
+                <input
+                    type="password"
+                    placeholder="Пароль"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={styles.input}
+                />
+                <button onClick={handleRegister} className={styles.button}>Зарегистрироваться</button>
+                <button onClick={handleLogin} className={styles.button}>Войти</button>
+                <p className={styles.message}>{message}</p>
+            </div>
+        );
+    }
 }
-}
+
 export default Auth;
