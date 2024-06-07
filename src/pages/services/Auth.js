@@ -73,49 +73,6 @@ function Auth() {
         setProfilePicture('');
     };
 
-//     return (
-//         <div>
-//             <h1>Auth</h1>
-//             <input
-//                 type="text"
-//                 placeholder="Username"
-//                 value={username}
-//                 onChange={(e) => setUsername(e.target.value)}
-//             />
-//             <input
-//                 type="password"
-//                 placeholder="Password"
-//                 value={password}
-//                 onChange={(e) => setPassword(e.target.value)}
-//             />
-//             <button onClick={handleRegister}>Register</button>
-//             <button onClick={handleLogin}>Login</button>
-//             <p>{message}</p>
-
-//             {profilePicture && 
-//   <div style={{
-//     width: '100px', // Замените значение на требуемую ширину
-//     height: '100px', // Замените значение на требуемую высоту
-//     borderRadius: '50%', // Делает изображение круглым
-//     overflow: 'hidden' // Обрезает изображение по границам круга
-//   }}>
-//     <img src={`http://localhost:4000${profilePicture}`} alt="Profile" style={{
-//       width: '100%', 
-//       height: '100%',
-//       objectFit: 'cover' // Подгоняет изображение под размер контейнера
-//     }} />
-//   </div>
-// }
-
-//             <input
-//                 type="file"
-//                 name="image"
-//                 onChange={(e) => setImage(e.target.files[0])}
-//             />
-//             <button onClick={handleUpload}>Upload</button>
-//         </div>
-//     );
-
 if (localStorage.getItem('token')) {
     return (
         <div>
@@ -147,7 +104,10 @@ if (localStorage.getItem('token')) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handleRegister}>Register</button>
+            <button className="btn btn-secondary"
+          style={{ width: '100%' }}
+          onClick={handleRegister}>Register
+          </button>
             <button onClick={handleLogin}>Login</button>
             <p>{message}</p>
         </div>
