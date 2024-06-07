@@ -1,11 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Home = ({ username, setUsername, room, setRoom, socket }) => {
   const navigate = useNavigate();
+  const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/rooms');
+        setRooms(response.data);
+      } catch (err) {
+        console.error('Error fetching rooms:', err);
+      }
+    };
+
+    fetchRooms();
+
     const storedUsername = localStorage.getItem('username');
     const storedRoom = localStorage.getItem('room');
     if (storedUsername) setUsername(storedUsername);
@@ -38,10 +51,11 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
           onChange={(e) => setRoom(e.target.value)}
         >
           <option value="">-- Выберите Чат --</option>
-          <option value="Чат 1">Чат 1</option>
-          <option value="Чат 2">Чат 2</option>
-          <option value="Чат 3">Чат 3</option>
-          <option value="Чат 4">Чат 4</option>
+          {rooms.map((room) => (
+            <option key={room._id} value={room.name}>
+              {room.name}
+            </option>
+          ))}
         </select>
         <button
           className="btn btn-secondary"
