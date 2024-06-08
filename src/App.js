@@ -14,6 +14,7 @@ const socket = io.connect('https://patregochat-server.onrender.com');
 function App() {
   const [username, setUsername] = useState(localStorage.getItem('username') || '');
   const [room, setRoom] = useState('');
+  const [profilePicture, setProfilePicture] = useState('');
   const [user, setUser] = useState(null);
 //http://localhost:4000/me
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
             }
           });
           setUser(response.data);
+          setProfilePicture(user.profilePicture);
         } catch (err) {
           console.error('Error fetching user:', err);
         }
