@@ -77,7 +77,7 @@ function App() {
           <Route
           
             path='/chat'
-            element={<Chat username={localStorage.getItem('username')} room={room} socket={socket} profilePicture = {profilePicture}/>}
+            element={<Chat username={localStorage.getItem('username')} room={room} socket={socket} profilePicture = {localStorage.getItem('profilePicture')}/>}
           />
           <Route
             path='/reg'

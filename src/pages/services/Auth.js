@@ -67,7 +67,14 @@ function Auth() {
                 },
             });
             setMessage('Image uploaded successfully');
-            setProfilePicture(profilePicture);
+            axios.get('https://patregochat-server.onrender.com/me', {
+                headers: { Authorization: token }
+            }).then(response => {
+                setProfilePicture(response.data.profilePicture);
+            }).catch(err => {
+                console.log('Error fetching user data', err);
+            });
+            //setProfilePicture(profilePicture);
             localStorage.setItem('profilePicture', profilePicture);
         } catch (err) {
             setMessage('Error uploading image');
